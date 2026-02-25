@@ -1,0 +1,119 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container">
+    <h1>产品管理（Markdown详情）</h1>
+    <%- include('partials/admin-nav') %>
+    <% if (status) { %><p class="admin-status">Status: <%= status %></p><% } %>
+
+    <section class="admin-block">
+      <h2>新增产品</h2>
+      <form action="/api/admin/products/create" method="post" class="admin-form">
+        <label>产品名称(EN) <input name="name" required /></label>
+        <label>产品名称(简中) <input name="nameZh" /></label>
+        <label>产品名称(繁中) <input name="nameZhTw" /></label>
+        <label>排序 <input name="sortOrder" type="number" min="1" value="<%= products.length + 1 %>" /></label>
+        <label>所属系列
+          <select name="seriesId" required>
+            <% series.forEach((s) => { %>
+            <option value="<%= s.id %>"><%= s.name %></option>
+            <% }) %>
+          </select>
+        </label>
+        <div></div>
+        <label class="full">产品简介(EN) <textarea name="summary" rows="2"></textarea></label>
+        <label class="full">产品简介(简中) <textarea name="summaryZh" rows="2"></textarea></label>
+        <label class="full">产品简介(繁中) <textarea name="summaryZhTw" rows="2"></textarea></label>
+        <label class="full">图片URL <input class="image-input" name="image" placeholder="/images/product-neutral.svg" /></label>
+        <label class="full">详情内容 EN（支持从 Docmost/Notion 粘贴，保留格式）</label>
+        <div class="markdown-editor">
+          <div class="markdown-toolbar">
+            <button type="button" class="btn editor-toggle">全屏编辑</button>
+          </div>
+          <textarea class="markdown-textarea rich-source" name="detailMarkdown" rows="12" data-expandable data-rich-editor placeholder="可直接粘贴富文本/表格/图片/视频"></textarea>
+        </div>
+        <label class="full">详情内容 简中</label>
+        <div class="markdown-editor">
+          <div class="markdown-toolbar">
+            <button type="button" class="btn editor-toggle">全屏编辑</button>
+          </div>
+          <textarea class="markdown-textarea rich-source" name="detailMarkdownZh" rows="12" data-expandable data-rich-editor></textarea>
+        </div>
+        <label class="full">详情内容 繁中</label>
+        <div class="markdown-editor">
+          <div class="markdown-toolbar">
+            <button type="button" class="btn editor-toggle">全屏编辑</button>
+          </div>
+          <textarea class="markdown-textarea rich-source" name="detailMarkdownZhTw" rows="12" data-expandable data-rich-editor></textarea>
+        </div>
+        <div class="admin-actions"><button class="btn btn-primary" type="submit">Create</button></div>
+      </form>
+    </section>
+
+    <section class="admin-block">
+      <h2>现有产品</h2>
+      <div class="filter-row">
+        <input class="filter-input" type="search" placeholder="搜索产品名称/ID/摘要..." data-filter-target="productsList" />
+        <select class="filter-select" data-filter-target="productsList" data-filter-attr="data-series-id">
+          <option value="">全部系列</option>
+          <% series.forEach((s) => { %>
+          <option value="<%= s.id %>"><%= s.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div id="productsList">
+      <% products.forEach((item) => { %>
+      <details class="admin-collapse" data-series-id="<%= item.seriesId %>">
+        <summary><strong><%= item.name %></strong> · ID: <%= item.id %> · Sort: <%= item.sortOrder %></summary>
+        <article class="admin-item admin-collapse-body">
+          <form action="/api/admin/products/<%= item.id %>/update" method="post" class="admin-form">
+            <label>产品名称(EN) <input name="name" value="<%= item.name %>" required /></label>
+            <label>产品名称(简中) <input name="nameZh" value="<%= item.nameZh || '' %>" /></label>
+            <label>产品名称(繁中) <input name="nameZhTw" value="<%= item.nameZhTw || '' %>" /></label>
+            <label>排序 <input name="sortOrder" type="number" min="1" value="<%= item.sortOrder %>" /></label>
+            <label>所属系列
+              <select name="seriesId" required>
+                <% series.forEach((s) => { %>
+                <option value="<%= s.id %>" <%= s.id === item.seriesId ? 'selected' : '' %>><%= s.name %></option>
+                <% }) %>
+              </select>
+            </label>
+            <div></div>
+            <label class="full">产品简介(EN) <textarea name="summary" rows="2"><%= item.summary %></textarea></label>
+            <label class="full">产品简介(简中) <textarea name="summaryZh" rows="2"><%= item.summaryZh || '' %></textarea></label>
+            <label class="full">产品简介(繁中) <textarea name="summaryZhTw" rows="2"><%= item.summaryZhTw || '' %></textarea></label>
+            <label class="full">图片URL <input class="image-input" name="image" value="<%= item.image %>" /></label>
+            <label class="full">详情内容 EN（支持从 Docmost/Notion 粘贴，保留格式）</label>
+            <div class="markdown-editor">
+              <div class="markdown-toolbar">
+                <button type="button" class="btn editor-toggle">全屏编辑</button>
+              </div>
+              <textarea class="markdown-textarea rich-source" name="detailMarkdown" rows="12" data-expandable data-rich-editor><%= item.detailMarkdown %></textarea>
+            </div>
+            <label class="full">详情内容 简中</label>
+            <div class="markdown-editor">
+              <div class="markdown-toolbar">
+                <button type="button" class="btn editor-toggle">全屏编辑</button>
+              </div>
+              <textarea class="markdown-textarea rich-source" name="detailMarkdownZh" rows="12" data-expandable data-rich-editor><%= item.detailMarkdownZh || '' %></textarea>
+            </div>
+            <label class="full">详情内容 繁中</label>
+            <div class="markdown-editor">
+              <div class="markdown-toolbar">
+                <button type="button" class="btn editor-toggle">全屏编辑</button>
+              </div>
+              <textarea class="markdown-textarea rich-source" name="detailMarkdownZhTw" rows="12" data-expandable data-rich-editor><%= item.detailMarkdownZhTw || '' %></textarea>
+            </div>
+            <div class="admin-actions"><button class="btn btn-primary" type="submit">Update</button></div>
+          </form>
+          <form action="/api/admin/products/<%= item.id %>/delete" method="post" onsubmit="return confirm('Delete this product?')">
+            <button class="btn" type="submit">Delete</button>
+          </form>
+        </article>
+      </details>
+      <% }) %>
+      </div>
+    </section>
+  </div>
+</main>
+<%- include('partials/footer') %>

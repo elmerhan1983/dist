@@ -1,0 +1,160 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="home-layout">
+  <% pageLayout.forEach((section) => { %>
+    <% if (section.enabled && section.key === 'hero') { %>
+    <section class="hero layout-section" style="order:<%= section.sortOrder %>">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker"><%= siteSettingsDisplay.hero.kicker %></p>
+          <h1><%= siteSettingsDisplay.hero.title %></h1>
+          <p><%= siteSettingsDisplay.hero.description %></p>
+          <div class="cta-group">
+            <a href="<%= withLang('/products') %>" class="btn btn-primary"><%= t('exploreProducts') %></a>
+            <a href="<%= withLang('/inquiry') %>" class="btn"><%= t('requestQuotation') %></a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2><%= siteSettingsDisplay.hero.whyTitle %></h2>
+          <ul>
+            <% (siteSettingsDisplay.hero.whyPoints || []).forEach((point) => { %>
+            <li><%= point %></li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <% } %>
+
+    <% if (section.enabled && section.key === 'banners') { %>
+    <section class="section layout-section" style="order:<%= section.sortOrder %>">
+      <div class="container">
+        <div class="banner-carousel" data-carousel>
+          <% if (!banners.length) { %>
+          <div class="banner-slide active">
+            <img src="/images/product-neutral.svg" alt="<%= t('defaultBannerAlt') %>" />
+            <div class="banner-content"><h3><%= t('noBannerConfigured') %></h3></div>
+          </div>
+          <% } %>
+          <% banners.forEach((banner, i) => { %>
+          <article class="banner-slide <%= i === 0 ? 'active' : '' %>" data-slide>
+            <img src="<%= banner.image %>" alt="<%= banner.title %>" />
+            <div class="banner-content">
+              <h3<% if (banner.titleFontSize) { %> style="font-size:<%= banner.titleFontSize %>px"<% } %>><%= banner.title %></h3>
+              <p<% if (banner.descFontSize) { %> style="font-size:<%= banner.descFontSize %>px"<% } %>><%= banner.description %></p>
+              <a class="btn btn-primary" href="<%= withLang(banner.link) %>"><%= t('more') %></a>
+            </div>
+          </article>
+          <% }) %>
+          <div class="banner-dots" data-dots></div>
+        </div>
+      </div>
+    </section>
+    <% } %>
+
+    <% if (section.enabled && section.key === 'series') { %>
+    <section class="section layout-section" style="order:<%= section.sortOrder %>">
+      <div class="container">
+        <h2><%= t('productSeries') %></h2>
+        <div class="product-grid">
+          <% series.forEach((item) => { %>
+          <article class="product-card series-card">
+            <div class="series-image-frame">
+              <img class="series-image" src="<%= item.image %>" alt="<%= item.name %>" loading="lazy" />
+            </div>
+            <h3><a href="/series/<%= item.id %>"><%= item.name %></a></h3>
+            <p><%= item.summary %></p>
+            <a class="btn" href="<%= withLang('/series/' + item.id) %>"><%= t('viewSeries') %></a>
+          </article>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+    <% } %>
+
+    <% if (section.enabled && section.key === 'company') { %>
+    <section class="section section-alt layout-section" style="order:<%= section.sortOrder %>">
+      <div class="container split">
+        <div>
+          <h2><%= siteSettingsDisplay.video.title %></h2>
+          <p><%= siteSettingsDisplay.video.description %></p>
+          <% if (mainVideo) { %>
+          <div class="video-wrap video-showcase">
+            <% if (mainVideo.type === 'file') { %>
+            <video controls preload="metadata" src="<%= mainVideo.fileUrl %>" poster="<%= mainVideo.previewImage %>"></video>
+            <% } else { %>
+            <iframe src="<%= mainVideo.embedUrl %>" title="<%= mainVideo.title %>" loading="lazy" allowfullscreen></iframe>
+            <% } %>
+          </div>
+          <% if (homeVideos.length) { %>
+          <div class="video-thumb-list">
+            <% homeVideos.forEach((video, idx) => { %>
+            <button
+              type="button"
+              class="video-thumb <%= idx === 0 ? 'active' : '' %>"
+              data-video-type="<%= video.type %>"
+              data-video-src="<%= video.type === 'file' ? video.fileUrl : video.embedUrl %>"
+              data-video-poster="<%= video.previewImage %>"
+              data-video-title="<%= video.title %>"
+              data-open-video="1"
+            >
+              <img src="<%= video.previewImage %>" alt="<%= video.title %>" loading="lazy" />
+              <span><%= video.title %></span>
+            </button>
+            <% }) %>
+          </div>
+          <% } %>
+          <% } else { %>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Company Video" loading="lazy" allowfullscreen></iframe>
+          </div>
+          <% } %>
+        </div>
+        <div>
+          <h2><%= t('companyIntroduction') %></h2>
+          <p><strong><%= t('founded') %>:</strong> <%= site.company.founded %></p>
+          <p><strong><%= t('headquarters') %>:</strong> <%= site.company.location %></p>
+          <p><strong><%= t('certifications') %>:</strong> <%= site.company.certifications.join(', ') %></p>
+          <p><%= site.company.intro %></p>
+        </div>
+      </div>
+    </section>
+    <div class="video-modal" id="videoModal" aria-hidden="true">
+      <div class="video-modal-backdrop" data-video-close></div>
+      <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-label="Video Preview">
+        <button type="button" class="video-modal-close" data-video-close>×</button>
+        <div class="video-modal-player" id="videoModalPlayer"></div>
+      </div>
+    </div>
+    <% } %>
+
+    <% if (section.enabled && section.key === 'wiki') { %>
+    <section class="section layout-section" style="order:<%= section.sortOrder %>">
+      <div class="container">
+        <h2><%= t('technicalWikiHighlights') %></h2>
+        <div class="wiki-grid">
+          <% wikiArticles.forEach((article) => { %>
+          <article class="wiki-card">
+            <p class="badge"><%= article.category %></p>
+            <h3><a href="<%= withLang('/wiki/' + article.slug) %>"><%= article.title %></a></h3>
+            <p><%= article.excerpt %></p>
+          </article>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+    <% } %>
+
+    <% if (section.enabled && section.key === 'inquiry') { %>
+    <section class="section section-alt layout-section" style="order:<%= section.sortOrder %>">
+      <div class="container">
+        <h2><%= siteSettingsDisplay.inquiry.title %></h2>
+        <p><%= siteSettingsDisplay.inquiry.description %></p>
+        <a href="<%= withLang('/inquiry') %>" class="btn btn-primary"><%= siteSettingsDisplay.inquiry.ctaText %></a>
+      </div>
+    </section>
+    <% } %>
+  <% }) %>
+</main>
+<%- include('partials/floating-contact') %>
+<%- include('partials/footer') %>

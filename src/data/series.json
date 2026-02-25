@@ -1,0 +1,37 @@
+[
+  {
+    "id": "series-lab",
+    "name": "Laboratory Freeze Dryers",
+    "summary": "Compact freeze drying systems for labs and universities.",
+    "image": "/uploads/1772000476000-pioneer3l-jpg.jpg",
+    "sortOrder": 1
+  },
+  {
+    "id": "series-pilot",
+    "name": "Pilot Freeze Dryers",
+    "summary": "Scale-up platforms for process development and optimization.",
+    "image": "/uploads/1772000492552-creator-jpg.jpg",
+    "sortOrder": 2
+  },
+  {
+    "id": "series-gmp",
+    "name": "GMP Production Systems",
+    "summary": "Industrial lyophilizers for regulated production lines.",
+    "image": "/uploads/1772001053908-gmpfd-jpg.jpg",
+    "sortOrder": 3
+  },
+  {
+    "id": "series-thermal",
+    "name": "Thermal Control & Accessories",
+    "summary": "Thermostatic baths and accessories for analytical and process use.",
+    "image": "/uploads/1772000993389-thermobath-jpg.jpg",
+    "sortOrder": 4
+  },
+  {
+    "id": "series-1771999779440",
+    "name": "Small Food Freeze Dryer",
+    "summary": "5kg to 30kg food freeze dryer",
+    "image": "/uploads/1772000454245-1h31-jpg.jpg",
+    "sortOrder": 5
+  }
+]

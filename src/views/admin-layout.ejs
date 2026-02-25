@@ -1,0 +1,36 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container">
+    <h1>页面布局管理</h1>
+    <%- include('partials/admin-nav') %>
+
+    <% if (status) { %>
+    <p class="admin-status">Status: <%= status %></p>
+    <% } %>
+
+    <section class="admin-block">
+      <h2>首页区块设置</h2>
+      <form action="/api/admin/layout/update" method="post" class="layout-form">
+        <% pageLayout.forEach((section) => { %>
+        <div class="layout-row">
+          <div>
+            <strong><%= section.label %></strong>
+            <p class="badge">key: <%= section.key %></p>
+          </div>
+          <label class="checkbox-label">
+            <input type="checkbox" name="enabled_<%= section.key %>" <%= section.enabled ? 'checked' : '' %> />
+            显示
+          </label>
+          <label>
+            顺序
+            <input type="number" name="sortOrder_<%= section.key %>" min="1" max="20" value="<%= section.sortOrder %>" />
+          </label>
+        </div>
+        <% }) %>
+        <button class="btn btn-primary" type="submit">保存布局</button>
+      </form>
+    </section>
+  </div>
+</main>
+<%- include('partials/footer') %>

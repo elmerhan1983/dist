@@ -1,0 +1,7 @@
+[
+  { "key": "hero", "label": "Hero", "enabled": true, "sortOrder": 1 },
+  { "key": "products", "label": "Product Showcase", "enabled": true, "sortOrder": 2 },
+  { "key": "company", "label": "Company + Video", "enabled": true, "sortOrder": 3 },
+  { "key": "wiki", "label": "Wiki Highlights", "enabled": true, "sortOrder": 4 },
+  { "key": "inquiry", "label": "Inquiry CTA", "enabled": true, "sortOrder": 5 }
+]

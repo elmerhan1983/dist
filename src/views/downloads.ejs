@@ -1,0 +1,29 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container">
+    <h1>Downloads</h1>
+    <p>Access brochures, manuals, and technical documents.</p>
+
+    <section class="category-section">
+      <h2>All Downloads</h2>
+      <div class="product-grid">
+        <% downloads.forEach((item) => { %>
+        <article class="product-card">
+          <h3><%= item.title %></h3>
+          <p><%= item.summary %></p>
+          <a class="btn btn-primary" href="<%= item.publicUrl %>" target="_blank" rel="noopener">Download</a>
+        </article>
+        <% }) %>
+        <% if (!downloads.length) { %>
+        <article class="product-card">
+          <h3>No Downloads</h3>
+          <p>Please add download files in Site Settings.</p>
+        </article>
+        <% } %>
+      </div>
+    </section>
+  </div>
+</main>
+<%- include('partials/floating-contact') %>
+<%- include('partials/footer') %>

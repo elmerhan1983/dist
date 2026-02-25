@@ -1,0 +1,21 @@
+{
+  "name": "industrial-showcase-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "export:static": "node scripts/export-static.mjs",
+    "watch:static": "node scripts/watch-static.mjs",
+    "sync:auto": "node scripts/auto-sync.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.1",
+    "express-session": "^1.18.1",
+    "helmet": "^7.2.0"
+  }
+}

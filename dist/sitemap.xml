@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>http://127.0.0.1:4173/</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+<url><loc>http://127.0.0.1:4173/products</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/about</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/wiki</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/inquiry</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/downloads</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/series/series-lab</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/series/series-pilot</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/series/series-gmp</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/series/series-thermal</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/series/series-1771999779440</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/product/prod-lab-2l</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/product/prod-lab-12l</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/product/prod-pilot-16kg</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/product/prod-gmp-200kg</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/product/prod-bath-90</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/product/prod-1771983975806</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/product/prod-1771999440771</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/wiki/how-freeze-drying-works</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>http://127.0.0.1:4173/wiki/gmp-freeze-dryer-validation-checklist</loc><lastmod>2026-02-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>

@@ -1,0 +1,24 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container" id="productsExportArea">
+    <h1><%= t('productSeries') %></h1>
+    <p><button type="button" class="btn" data-export-pdf data-export-target="#productsExportArea" data-export-title="Product-Series"><%= t('exportPdf') %></button></p>
+    <p><%= t('productSeriesHint') %></p>
+    <div class="product-grid">
+      <% series.forEach((item) => { %>
+      <article class="product-card series-card">
+        <div class="series-image-frame">
+          <img class="series-image" src="<%= item.image %>" alt="<%= item.name %>" loading="lazy" />
+        </div>
+        <h2><a href="<%= withLang('/series/' + item.id) %>"><%= item.name %></a></h2>
+        <p><%= item.summary %></p>
+        <p class="badge"><%= t('productsCount') %>: <%= productCountMap[item.id] || 0 %></p>
+        <a class="btn" href="<%= withLang('/series/' + item.id) %>"><%= t('openSeries') %></a>
+      </article>
+      <% }) %>
+    </div>
+  </div>
+</main>
+<%- include('partials/floating-contact') %>
+<%- include('partials/footer') %>

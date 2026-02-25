@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container">
+    <h1>Technical Wiki</h1>
+    <form class="search-bar" action="/wiki" method="get">
+      <input type="search" name="q" placeholder="Search technical topics..." value="<%= query || '' %>" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div class="wiki-grid">
+      <% if (!wikiArticles.length) { %>
+      <p>No article matched your query.</p>
+      <% } %>
+      <% wikiArticles.forEach((article) => { %>
+      <article class="wiki-card">
+        <p class="badge"><%= article.category %> · Updated <%= article.updatedAt %></p>
+        <h2><a href="/wiki/<%= article.slug %>"><%= article.title %></a></h2>
+        <p><%= article.excerpt %></p>
+      </article>
+      <% }) %>
+    </div>
+  </div>
+</main>
+<%- include('partials/floating-contact') %>
+<%- include('partials/footer') %>

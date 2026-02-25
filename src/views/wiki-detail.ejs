@@ -1,0 +1,14 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <article class="container article markdown-body">
+    <p><a href="/wiki">← Back to Wiki</a></p>
+    <h1><%= article.title %></h1>
+    <p class="badge"><%= article.category %> · Updated <%= article.updatedAt %></p>
+    <p><%= article.excerpt %></p>
+    <nav class="toc-box" data-toc></nav>
+    <div><%- articleHtml %></div>
+  </article>
+</main>
+<%- include('partials/floating-contact') %>
+<%- include('partials/footer') %>

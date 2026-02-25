@@ -1,0 +1,18 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container form-container">
+    <h1>Account Login</h1>
+    <p>Demo account for protected downloads:</p>
+    <p><code>demo@sj.com / 12345678</code></p>
+    <form id="loginForm" class="form-grid narrow">
+      <input type="hidden" name="nextPath" value="<%= nextPath %>" />
+      <label>Email <input type="email" name="username" required /></label>
+      <label>Password <input type="password" name="password" required /></label>
+      <button type="submit" class="btn btn-primary">Login</button>
+      <p id="loginStatus" class="form-status"></p>
+    </form>
+  </div>
+</main>
+<%- include('partials/floating-contact') %>
+<%- include('partials/footer') %>

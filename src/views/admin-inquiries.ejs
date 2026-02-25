@@ -1,0 +1,38 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container">
+    <h1>询盘管理</h1>
+    <%- include('partials/admin-nav') %>
+    <p>共 <%= inquiries.length %> 条。每条可折叠查看详情。</p>
+
+    <section class="admin-block">
+      <input class="filter-input" type="search" placeholder="搜索询盘ID/姓名/邮箱/产品..." data-filter-target="inquiryList" />
+      <div id="inquiryList">
+      <% inquiries.forEach((inq, idx) => { %>
+      <details class="admin-collapse" <%= idx < 3 ? 'open' : '' %>>
+        <summary>
+          <strong><%= inq.id %></strong> · <%= inq.name %> · <%= inq.email %>
+          <% if (inq.productName || inq.productId) { %>
+          · Product: <%= inq.productName || inq.productId %>
+          <% } %>
+          · <%= inq.createdAt %>
+        </summary>
+        <div class="admin-collapse-body">
+          <p><strong>Company:</strong> <%= inq.companyName || '-' %></p>
+          <p><strong>Phone:</strong> <%= inq.phone || '-' %></p>
+          <p><strong>Product Interest:</strong> <%= inq.productInterest || '-' %></p>
+          <p><strong>Product ID:</strong> <%= inq.productId || '-' %></p>
+          <p><strong>Message:</strong></p>
+          <p><%= inq.message %></p>
+        </div>
+      </details>
+      <% }) %>
+      <% if (!inquiries.length) { %>
+      <p>No inquiries yet.</p>
+      <% } %>
+      </div>
+    </section>
+  </div>
+</main>
+<%- include('partials/footer') %>

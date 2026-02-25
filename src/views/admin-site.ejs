@@ -1,0 +1,152 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container">
+    <h1>站点设置</h1>
+    <%- include('partials/admin-nav') %>
+    <% if (status) { %><p class="admin-status">Status: <%= status %></p><% } %>
+
+    <section class="admin-block">
+      <h2>首页文案/视频区标题/Inquiry/悬浮联系方式</h2>
+      <form action="/api/admin/site/update-core" method="post" class="admin-form">
+        <label>Hero Kicker (EN) <input name="heroKicker" value="<%= siteSettings.hero.kicker %>" /></label>
+        <label>Hero Kicker (简中) <input name="heroKickerZh" value="<%= siteSettings.hero.kickerZh || '' %>" /></label>
+        <label>Hero Kicker (繁中) <input name="heroKickerZhTw" value="<%= siteSettings.hero.kickerZhTw || '' %>" /></label>
+        <label>Hero 标题 (EN) <input name="heroTitle" value="<%= siteSettings.hero.title %>" /></label>
+        <label>Hero 标题 (简中) <input name="heroTitleZh" value="<%= siteSettings.hero.titleZh || '' %>" /></label>
+        <label>Hero 标题 (繁中) <input name="heroTitleZhTw" value="<%= siteSettings.hero.titleZhTw || '' %>" /></label>
+        <label class="full">Hero 描述 (EN) <textarea name="heroDescription" rows="2"><%= siteSettings.hero.description %></textarea></label>
+        <label class="full">Hero 描述 (简中) <textarea name="heroDescriptionZh" rows="2"><%= siteSettings.hero.descriptionZh || '' %></textarea></label>
+        <label class="full">Hero 描述 (繁中) <textarea name="heroDescriptionZhTw" rows="2"><%= siteSettings.hero.descriptionZhTw || '' %></textarea></label>
+        <label>Why 标题 (EN) <input name="heroWhyTitle" value="<%= siteSettings.hero.whyTitle %>" /></label>
+        <label>Why 标题 (简中) <input name="heroWhyTitleZh" value="<%= siteSettings.hero.whyTitleZh || '' %>" /></label>
+        <label>Why 标题 (繁中) <input name="heroWhyTitleZhTw" value="<%= siteSettings.hero.whyTitleZhTw || '' %>" /></label>
+        <div></div>
+        <label class="full">Why 要点 EN(一行一条) <textarea name="heroWhyPoints" rows="4"><%= (siteSettings.hero.whyPoints || []).join('\n') %></textarea></label>
+        <label class="full">Why 要点 简中(一行一条) <textarea name="heroWhyPointsZh" rows="4"><%= (siteSettings.hero.whyPointsZh || []).join('\n') %></textarea></label>
+        <label class="full">Why 要点 繁中(一行一条) <textarea name="heroWhyPointsZhTw" rows="4"><%= (siteSettings.hero.whyPointsZhTw || []).join('\n') %></textarea></label>
+
+        <label>视频区标题 (EN) <input name="videoTitle" value="<%= siteSettings.video.title %>" /></label>
+        <label>视频区标题 (简中) <input name="videoTitleZh" value="<%= siteSettings.video.titleZh || '' %>" /></label>
+        <label>视频区标题 (繁中) <input name="videoTitleZhTw" value="<%= siteSettings.video.titleZhTw || '' %>" /></label>
+        <label class="full">视频描述 (EN) <textarea name="videoDescription" rows="2"><%= siteSettings.video.description %></textarea></label>
+        <label class="full">视频描述 (简中) <textarea name="videoDescriptionZh" rows="2"><%= siteSettings.video.descriptionZh || '' %></textarea></label>
+        <label class="full">视频描述 (繁中) <textarea name="videoDescriptionZhTw" rows="2"><%= siteSettings.video.descriptionZhTw || '' %></textarea></label>
+
+        <label>Inquiry 标题 (EN) <input name="inquiryTitle" value="<%= siteSettings.inquiry.title %>" /></label>
+        <label>Inquiry 标题 (简中) <input name="inquiryTitleZh" value="<%= siteSettings.inquiry.titleZh || '' %>" /></label>
+        <label>Inquiry 标题 (繁中) <input name="inquiryTitleZhTw" value="<%= siteSettings.inquiry.titleZhTw || '' %>" /></label>
+        <label>Inquiry 按钮文字 (EN) <input name="inquiryCtaText" value="<%= siteSettings.inquiry.ctaText %>" /></label>
+        <label>Inquiry 按钮文字 (简中) <input name="inquiryCtaTextZh" value="<%= siteSettings.inquiry.ctaTextZh || '' %>" /></label>
+        <label>Inquiry 按钮文字 (繁中) <input name="inquiryCtaTextZhTw" value="<%= siteSettings.inquiry.ctaTextZhTw || '' %>" /></label>
+        <label class="full">Inquiry 描述 (EN) <textarea name="inquiryDescription" rows="2"><%= siteSettings.inquiry.description %></textarea></label>
+        <label class="full">Inquiry 描述 (简中) <textarea name="inquiryDescriptionZh" rows="2"><%= siteSettings.inquiry.descriptionZh || '' %></textarea></label>
+        <label class="full">Inquiry 描述 (繁中) <textarea name="inquiryDescriptionZhTw" rows="2"><%= siteSettings.inquiry.descriptionZhTw || '' %></textarea></label>
+
+        <label>WhatsApp 号码 <input name="whatsappNumber" value="<%= siteSettings.contact.whatsappNumber %>" /></label>
+        <label>Email <input name="contactEmail" value="<%= siteSettings.contact.email %>" /></label>
+        <label>悬浮第三项文字(EN) <input name="inquiryLabel" value="<%= siteSettings.contact.inquiryLabel %>" /></label>
+        <label>悬浮第三项文字(简中) <input name="inquiryLabelZh" value="<%= siteSettings.contact.inquiryLabelZh || '' %>" /></label>
+        <label>悬浮第三项文字(繁中) <input name="inquiryLabelZhTw" value="<%= siteSettings.contact.inquiryLabelZhTw || '' %>" /></label>
+        <label>Facebook URL <input name="socialFacebook" value="<%= siteSettings.social.facebook %>" /></label>
+        <label>Instagram URL <input name="socialInstagram" value="<%= siteSettings.social.instagram %>" /></label>
+        <label>LinkedIn URL <input name="socialLinkedin" value="<%= siteSettings.social.linkedin %>" /></label>
+        <label>YouTube URL <input name="socialYoutube" value="<%= siteSettings.social.youtube %>" /></label>
+        <label class="full">X URL <input name="socialX" value="<%= siteSettings.social.x %>" /></label>
+
+        <div class="admin-actions"><button class="btn btn-primary" type="submit">Save Core Settings</button></div>
+      </form>
+    </section>
+
+    <section class="admin-block">
+      <h2>Banner 轮播管理</h2>
+      <form action="/api/admin/site/banner/create" method="post" class="admin-form">
+        <label>标题(EN) <input name="title" required /></label>
+        <label>标题(简中) <input name="titleZh" /></label>
+        <label>标题(繁中) <input name="titleZhTw" /></label>
+        <label>排序 <input name="sortOrder" type="number" min="1" value="<%= (siteSettings.banners.length || 0) + 1 %>" /></label>
+        <label class="full">描述(EN) <textarea name="description" rows="2"></textarea></label>
+        <label class="full">描述(简中) <textarea name="descriptionZh" rows="2"></textarea></label>
+        <label class="full">描述(繁中) <textarea name="descriptionZhTw" rows="2"></textarea></label>
+        <label>标题字号(px) <input name="titleFontSize" type="number" min="14" max="72" placeholder="默认" /></label>
+        <label>描述字号(px) <input name="descFontSize" type="number" min="12" max="56" placeholder="默认" /></label>
+        <label>图片URL <input class="image-input" name="image" placeholder="/images/product-neutral.svg" /></label>
+        <p class="field-hint">建议尺寸: 1600×800 (2:1)。若比例不一致，前台会居中裁切高度以保持布局一致。</p>
+        <label>链接URL <input name="link" placeholder="/products" /></label>
+        <div class="admin-actions"><button class="btn btn-primary" type="submit">Create Banner</button></div>
+      </form>
+
+      <input class="filter-input" type="search" placeholder="搜索Banner标题/描述..." data-filter-target="bannerList" />
+      <div id="bannerList">
+      <% siteSettings.banners.forEach((banner) => { %>
+      <details class="admin-collapse">
+        <summary><strong><%= banner.title %></strong> · Sort: <%= banner.sortOrder %> · <%= banner.enabled ? 'Enabled' : 'Disabled' %></summary>
+        <article class="admin-item admin-collapse-body">
+          <form action="/api/admin/site/banner/<%= banner.id %>/update" method="post" class="admin-form">
+            <label>标题(EN) <input name="title" value="<%= banner.title %>" /></label>
+            <label>标题(简中) <input name="titleZh" value="<%= banner.titleZh || '' %>" /></label>
+            <label>标题(繁中) <input name="titleZhTw" value="<%= banner.titleZhTw || '' %>" /></label>
+            <label>排序 <input name="sortOrder" type="number" min="1" value="<%= banner.sortOrder %>" /></label>
+            <label class="full">描述(EN) <textarea name="description" rows="2"><%= banner.description %></textarea></label>
+            <label class="full">描述(简中) <textarea name="descriptionZh" rows="2"><%= banner.descriptionZh || '' %></textarea></label>
+            <label class="full">描述(繁中) <textarea name="descriptionZhTw" rows="2"><%= banner.descriptionZhTw || '' %></textarea></label>
+            <label>标题字号(px) <input name="titleFontSize" type="number" min="14" max="72" value="<%= banner.titleFontSize || '' %>" placeholder="默认" /></label>
+            <label>描述字号(px) <input name="descFontSize" type="number" min="12" max="56" value="<%= banner.descFontSize || '' %>" placeholder="默认" /></label>
+            <label>图片URL <input class="image-input" name="image" value="<%= banner.image %>" /></label>
+            <p class="field-hint">建议尺寸: 1600×800 (2:1)。若比例不一致，前台会居中裁切高度以保持布局一致。</p>
+            <label>链接URL <input name="link" value="<%= banner.link %>" /></label>
+            <label class="checkbox-label full"><input type="checkbox" name="enabled" <%= banner.enabled ? 'checked' : '' %> /> 启用该Banner</label>
+            <div class="admin-actions"><button class="btn btn-primary" type="submit">Update Banner</button></div>
+          </form>
+          <form action="/api/admin/site/banner/<%= banner.id %>/delete" method="post" onsubmit="return confirm('Delete this banner?')">
+            <button class="btn" type="submit">Delete</button>
+          </form>
+        </article>
+      </details>
+      <% }) %>
+      </div>
+    </section>
+
+    <section class="admin-block">
+      <h2>下载项权限管理</h2>
+      <form action="/api/admin/site/download/create" method="post" class="admin-form">
+        <label>下载标题(EN) <input name="title" required /></label>
+        <label>下载标题(简中) <input name="titleZh" /></label>
+        <label>下载标题(繁中) <input name="titleZhTw" /></label>
+        <label>排序 <input name="sortOrder" type="number" min="1" value="<%= (siteSettings.downloads || []).length + 1 %>" /></label>
+        <label class="full">简介(EN) <textarea name="summary" rows="2"></textarea></label>
+        <label class="full">简介(简中) <textarea name="summaryZh" rows="2"></textarea></label>
+        <label class="full">简介(繁中) <textarea name="summaryZhTw" rows="2"></textarea></label>
+        <label class="full">下载链接URL <input name="url" placeholder="/uploads/xxx.pdf 或 https://..." required /></label>
+        <div class="admin-actions"><button class="btn btn-primary" type="submit">Create Download</button></div>
+      </form>
+
+      <input class="filter-input" type="search" placeholder="搜索下载标题/说明/URL..." data-filter-target="downloadList" />
+      <div id="downloadList">
+      <% (siteSettings.downloads || []).forEach((item) => { %>
+      <details class="admin-collapse">
+        <summary><strong><%= item.title %></strong> · Sort: <%= item.sortOrder %> · <%= item.enabled ? 'Enabled' : 'Disabled' %></summary>
+        <article class="admin-item admin-collapse-body">
+          <form action="/api/admin/site/download/<%= item.id %>/update" method="post" class="admin-form">
+            <label>下载标题(EN) <input name="title" value="<%= item.title %>" /></label>
+            <label>下载标题(简中) <input name="titleZh" value="<%= item.titleZh || '' %>" /></label>
+            <label>下载标题(繁中) <input name="titleZhTw" value="<%= item.titleZhTw || '' %>" /></label>
+            <label>排序 <input name="sortOrder" type="number" min="1" value="<%= item.sortOrder %>" /></label>
+            <label class="full">简介(EN) <textarea name="summary" rows="2"><%= item.summary %></textarea></label>
+            <label class="full">简介(简中) <textarea name="summaryZh" rows="2"><%= item.summaryZh || '' %></textarea></label>
+            <label class="full">简介(繁中) <textarea name="summaryZhTw" rows="2"><%= item.summaryZhTw || '' %></textarea></label>
+            <label class="full">下载链接URL <input name="url" value="<%= item.url %>" /></label>
+            <label class="checkbox-label full"><input type="checkbox" name="enabled" <%= item.enabled ? 'checked' : '' %> /> 启用该下载项</label>
+            <div class="admin-actions"><button class="btn btn-primary" type="submit">Update Download</button></div>
+          </form>
+          <form action="/api/admin/site/download/<%= item.id %>/delete" method="post" onsubmit="return confirm('Delete this download?')">
+            <button class="btn" type="submit">Delete</button>
+          </form>
+        </article>
+      </details>
+      <% }) %>
+      </div>
+    </section>
+  </div>
+</main>
+<%- include('partials/footer') %>

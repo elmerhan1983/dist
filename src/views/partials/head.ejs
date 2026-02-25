@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="<%= page.language || 'en' %>">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= page.title %></title>
+    <meta name="description" content="<%= page.description %>" />
+    <meta name="keywords" content="<%= page.keywords %>" />
+    <meta name="robots" content="<%= page.robots %>" />
+    <link rel="canonical" href="<%= site.url + page.canonical %>" />
+    <link rel="alternate" hreflang="en" href="<%= site.url + (page.alternate ? page.alternate.en : page.canonical) %>" />
+    <link rel="alternate" hreflang="zh-CN" href="<%= site.url + (page.alternate ? page.alternate.zh : page.canonical) %>" />
+    <link rel="alternate" hreflang="zh-TW" href="<%= site.url + (page.alternate ? page.alternate['zh-tw'] : page.canonical) %>" />
+    <link rel="alternate" hreflang="x-default" href="<%= site.url + (page.alternate ? page.alternate.en : page.canonical) %>" />
+
+    <meta property="og:type" content="<%= page.ogType %>" />
+    <meta property="og:title" content="<%= page.title %>" />
+    <meta property="og:description" content="<%= page.description %>" />
+    <meta property="og:url" content="<%= site.url + page.canonical %>" />
+    <meta property="og:site_name" content="<%= site.company.name %>" />
+    <meta property="og:image" content="<%= site.url + page.ogImage %>" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="<%= site.url + page.ogImage %>" />
+
+    <link rel="stylesheet" href="/css/style.css?v=<%= site.assetVersion %>" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/style.css?v=<%= site.assetVersion %>" />
+
+    <% if (site.googleAdsId) { %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<%= site.googleAdsId %>"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', '<%= site.googleAdsId %>');
+    </script>
+    <% } %>
+
+    <% if (site.customHeadScript) { %>
+    <%- site.customHeadScript %>
+    <% } %>
+
+    <% (page.structuredData || []).forEach((item) => { %>
+    <script type="application/ld+json"><%- JSON.stringify(item) %></script>
+    <% }) %>
+  </head>
+  <body>

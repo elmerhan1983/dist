@@ -1,0 +1,42 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <article class="container article markdown-body" id="productExportArea">
+    <p><a href="/series/<%= currentSeries ? currentSeries.id : '' %>">← Back to Series</a></p>
+    <h1><%= product.name %></h1>
+    <p><button type="button" class="btn" data-export-pdf data-export-target="#productExportArea" data-export-title="<%= product.name %>">Export PDF</button></p>
+    <p class="badge"><%= currentSeries ? currentSeries.name : 'Uncategorized' %></p>
+    <img class="detail-image" src="<%= product.image %>" alt="<%= product.name %>" />
+    <p><%= product.summary %></p>
+    <div class="product-rich-content"><%- productDetailHtml %></div>
+
+    <section class="detail-actions">
+      <h3>Share This Product</h3>
+      <div class="share-links">
+        <a class="btn" target="_blank" rel="noopener" href="<%= shareLinks.facebook %>">Facebook</a>
+        <a class="btn" target="_blank" rel="noopener" href="<%= shareLinks.instagram %>">Instagram</a>
+        <a class="btn" target="_blank" rel="noopener" href="<%= shareLinks.linkedin %>">LinkedIn</a>
+        <a class="btn" target="_blank" rel="noopener" href="<%= shareLinks.x %>">X</a>
+        <a class="btn" target="_blank" rel="noopener" href="<%= shareLinks.whatsapp %>">WhatsApp</a>
+      </div>
+    </section>
+
+    <section class="detail-inquiry">
+      <h3>Inquiry for this Product</h3>
+      <form class="form-grid" data-inquiry-form data-status-target="productInquiryStatus">
+        <input type="hidden" name="productId" value="<%= product.id %>" />
+        <input type="hidden" name="productName" value="<%= product.name %>" />
+        <input type="hidden" name="productInterest" value="<%= product.name %>" />
+        <label>Name* <input name="name" required /></label>
+        <label>Company <input name="companyName" /></label>
+        <label>Email* <input type="email" name="email" required /></label>
+        <label>Phone <input name="phone" /></label>
+        <label class="full">Message* <textarea name="message" rows="5" required></textarea></label>
+        <button type="submit" class="btn btn-primary">Submit Product Inquiry</button>
+        <p id="productInquiryStatus" class="form-status"></p>
+      </form>
+    </section>
+  </article>
+</main>
+<%- include('partials/floating-contact') %>
+<%- include('partials/footer') %>

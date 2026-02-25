@@ -1,0 +1,36 @@
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <h3><%= site.company.name %></h3>
+      <p><%= site.company.intro %></p>
+    </div>
+    <div>
+      <h4><%= t('social') %></h4>
+      <div class="social-links">
+        <a href="<%= site.social.linkedin %>" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="<%= site.social.youtube %>" target="_blank" rel="noopener">YouTube</a>
+        <a href="<%= site.social.facebook %>" target="_blank" rel="noopener">Facebook</a>
+        <a href="<%= site.social.instagram %>" target="_blank" rel="noopener">Instagram</a>
+        <a href="<%= site.social.x %>" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <div>
+      <h4><%= t('contact') %></h4>
+      <p>Email: <a href="mailto:<%= site.contact.email %>"><%= site.contact.email %></a></p>
+      <p>WhatsApp: <a target="_blank" rel="noopener" href="https://wa.me/<%= site.contact.whatsappNumber %>">+<%= site.contact.whatsappNumber %></a></p>
+    </div>
+  </div>
+</footer>
+<script src="/js/main.js?v=<%= site.assetVersion %>" defer></script>
+<script src="/main.js?v=<%= site.assetVersion %>" defer></script>
+<script>
+  window.addEventListener('load', function () {
+    if (window.__SJ_MAIN_LOADED__) return;
+    var s = document.createElement('script');
+    s.src = '/js/main.js';
+    s.defer = true;
+    document.body.appendChild(s);
+  });
+</script>
+</body>
+</html>

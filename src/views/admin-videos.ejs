@@ -1,0 +1,56 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container">
+    <h1>视频管理</h1>
+    <%- include('partials/admin-nav') %>
+    <% if (status) { %><p class="admin-status">Status: <%= status %></p><% } %>
+
+    <section class="admin-block">
+      <h2>新增视频</h2>
+      <form action="/api/admin/videos/create" method="post" class="admin-form">
+        <label>标题(EN) <input name="title" required /></label>
+        <label>标题(简中) <input name="titleZh" /></label>
+        <label>标题(繁中) <input name="titleZhTw" /></label>
+        <label>排序 <input name="sortOrder" type="number" min="1" value="<%= (videos.length || 0) + 1 %>" /></label>
+        <label class="full">描述(EN) <textarea name="description" rows="2"></textarea></label>
+        <label class="full">描述(简中) <textarea name="descriptionZh" rows="2"></textarea></label>
+        <label class="full">描述(繁中) <textarea name="descriptionZhTw" rows="2"></textarea></label>
+        <label>视频URL <input class="media-input" name="url" placeholder="YouTube/Vimeo/MP4 URL" /></label>
+        <label>封面图URL <input class="image-input" name="coverImage" placeholder="/images/product-neutral.svg" /></label>
+        <div class="admin-actions"><button class="btn btn-primary" type="submit">Create Video</button></div>
+      </form>
+    </section>
+
+    <section class="admin-block">
+      <h2>现有视频</h2>
+      <input class="filter-input" type="search" placeholder="搜索视频标题/URL..." data-filter-target="videosList" />
+      <div id="videosList">
+      <% videos.forEach((video) => { %>
+      <details class="admin-collapse">
+        <summary><strong><%= video.title %></strong> · Sort: <%= video.sortOrder %> · <%= video.enabled ? 'Enabled' : 'Disabled' %></summary>
+        <article class="admin-item admin-collapse-body">
+          <form action="/api/admin/videos/<%= video.id %>/update" method="post" class="admin-form">
+            <label>标题(EN) <input name="title" value="<%= video.title %>" /></label>
+            <label>标题(简中) <input name="titleZh" value="<%= video.titleZh || '' %>" /></label>
+            <label>标题(繁中) <input name="titleZhTw" value="<%= video.titleZhTw || '' %>" /></label>
+            <label>排序 <input name="sortOrder" type="number" min="1" value="<%= video.sortOrder %>" /></label>
+            <label class="full">描述(EN) <textarea name="description" rows="2"><%= video.description %></textarea></label>
+            <label class="full">描述(简中) <textarea name="descriptionZh" rows="2"><%= video.descriptionZh || '' %></textarea></label>
+            <label class="full">描述(繁中) <textarea name="descriptionZhTw" rows="2"><%= video.descriptionZhTw || '' %></textarea></label>
+            <label>视频URL <input class="media-input" name="url" value="<%= video.url %>" /></label>
+            <label>封面图URL <input class="image-input" name="coverImage" value="<%= video.coverImage %>" /></label>
+            <label class="checkbox-label full"><input type="checkbox" name="enabled" <%= video.enabled ? 'checked' : '' %> /> 启用该视频</label>
+            <div class="admin-actions"><button class="btn btn-primary" type="submit">Update Video</button></div>
+          </form>
+          <form action="/api/admin/videos/<%= video.id %>/delete" method="post" onsubmit="return confirm('Delete this video?')">
+            <button class="btn" type="submit">Delete</button>
+          </form>
+        </article>
+      </details>
+      <% }) %>
+      </div>
+    </section>
+  </div>
+</main>
+<%- include('partials/footer') %>

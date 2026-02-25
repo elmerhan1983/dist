@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container" id="seriesExportArea">
+    <p><a href="<%= withLang('/products') %>">← <%= t('backToProductSeries') %></a></p>
+    <h1><%= currentSeries.name %></h1>
+    <p><button type="button" class="btn" data-export-pdf data-export-target="#seriesExportArea" data-export-title="<%= currentSeries.name %>"><%= t('exportPdf') %></button></p>
+    <p><%= currentSeries.summary %></p>
+
+    <div class="product-grid">
+      <% seriesProducts.forEach((item) => { %>
+      <article class="product-card">
+        <img src="<%= item.image %>" alt="<%= item.name %>" loading="lazy" />
+        <h3><a href="<%= withLang('/product/' + item.id) %>"><%= item.name %></a></h3>
+        <p><%= item.summary %></p>
+        <a class="btn" href="<%= withLang('/product/' + item.id) %>"><%= t('viewProduct') %></a>
+      </article>
+      <% }) %>
+      <% if (!seriesProducts.length) { %>
+      <p><%= t('noProductsInSeries') %></p>
+      <% } %>
+    </div>
+  </div>
+</main>
+<%- include('partials/floating-contact') %>
+<%- include('partials/footer') %>

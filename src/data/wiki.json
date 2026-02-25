@@ -1,0 +1,20 @@
+[
+  {
+    "id": "wiki-001",
+    "slug": "how-freeze-drying-works",
+    "title": "How Freeze Drying Works",
+    "excerpt": "A practical overview of freezing, primary drying, and secondary drying stages.",
+    "category": "Process Basics",
+    "updatedAt": "2026-02-24",
+    "contentMarkdown": "# How Freeze Drying Works\n\nFreeze drying removes water by sublimation under vacuum.\n\n## Three stages\n- Freezing\n- Primary drying\n- Secondary drying\n\nStable quality requires chamber pressure, shelf temperature and product temperature control."
+  },
+  {
+    "id": "wiki-002",
+    "slug": "gmp-freeze-dryer-validation-checklist",
+    "title": "GMP Freeze Dryer Validation Checklist",
+    "excerpt": "Qualification and documentation checkpoints before production runs.",
+    "category": "Compliance",
+    "updatedAt": "2026-02-24",
+    "contentMarkdown": "# GMP Freeze Dryer Validation Checklist\n\n## Required packages\n- IQ/OQ/PQ protocols\n- Audit trail verification\n- Electronic record controls\n\n## Execution\nRun representative load mapping and repeatability cycles."
+  }
+]

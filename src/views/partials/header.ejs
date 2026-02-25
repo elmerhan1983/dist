@@ -1,0 +1,31 @@
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href="<%= withLang('/') %>" class="brand">
+      <span class="brand-main"><%= site.company.shortName %></span>
+      <span class="brand-sub"><%= site.company.slogan %></span>
+    </a>
+    <nav class="nav">
+      <a href="<%= withLang('/') %>"><%= t('navHome') %></a>
+      <a href="<%= withLang('/products') %>"><%= t('navProducts') %></a>
+      <a href="<%= withLang('/about') %>"><%= t('navCompany') %></a>
+      <a href="<%= withLang('/wiki') %>"><%= t('navWiki') %></a>
+      <a href="<%= withLang('/inquiry') %>"><%= t('navInquiry') %></a>
+      <a href="<%= withLang('/downloads') %>"><%= t('navDownloads') %></a>
+      <% if (site.isLoggedIn) { %>
+      <a href="/admin"><%= t('navAdmin') %></a>
+      <% } %>
+    </nav>
+    <div class="account-actions">
+      <div class="lang-switch" aria-label="<%= t('language') %>">
+        <a href="<%= switchLangUrl('en') %>" class="<%= lang === 'en' ? 'active' : '' %>"><%= t('langEN') %></a>
+        <a href="<%= switchLangUrl('zh') %>" class="<%= lang === 'zh' ? 'active' : '' %>"><%= t('langZH') %></a>
+        <a href="<%= switchLangUrl('zh-tw') %>" class="<%= lang === 'zh-tw' ? 'active' : '' %>"><%= t('langZHTW') %></a>
+      </div>
+      <% if (site.isLoggedIn) { %>
+      <button id="logoutBtn" class="btn btn-outline" type="button"><%= t('logout') %></button>
+      <% } else { %>
+      <a href="<%= withLang('/login') %>" class="btn btn-outline"><%= t('login') %></a>
+      <% } %>
+    </div>
+  </div>
+</header>

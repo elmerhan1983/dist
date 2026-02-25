@@ -1,0 +1,13 @@
+SJ Scientific - Product Brochure (Demo)
+======================================
+
+This is a protected file to demonstrate account-based download access.
+
+Contents:
+- Lab freeze dryer specs
+- Pilot freeze dryer specs
+- GMP freeze dryer specs
+- Thermostatic bath specs
+- Service and qualification scope
+
+Contact: sales@example.com

@@ -1,0 +1,124 @@
+{
+  "hero": {
+    "kicker": "Industrial And Laboratory Solution",
+    "title": "Lab to GMP Freeze Drying Systems",
+    "description": "We design and manufacture laboratory, pilot, and GMP pharmaceutical freeze dryers, as well as commercial freeze drying systems for food and biotech industries.\r\nEngineered for precision temperature control, stable vacuum performance, and validated process reliability.",
+    "whyTitle": "Why choose SJ Scientific",
+    "whyPoints": [
+      "Lab, R&D, GMP & Food Systems",
+      "Integrated Temperature Control",
+      "Custom Process Engineering",
+      "GMP-Ready Automation",
+      "Strict Manufacturing Quality",
+      "Global Service & Support"
+    ]
+  },
+  "banners": [
+    {
+      "id": "bnr-1",
+      "title": "Pilot Freeze Dryer",
+      "description": "Temperature Control Freeze dryer\r\nShelf areas from 0.12 m² to 1.2 m².\r\n\r\nCustom Solutions;",
+      "image": "/uploads/1771996549376-creators2-jpg.jpg",
+      "link": "/series/series-pilot",
+      "titleFontSize": null,
+      "descFontSize": 16,
+      "sortOrder": 1,
+      "enabled": true
+    },
+    {
+      "id": "bnr-2",
+      "title": "Lab Freeze Dryer",
+      "description": "Ice Capacity range from 2L to 12L,\r\nCondenser Tempe:-60℃,-85℃ or -105 ℃\r\n7 inch touch-control",
+      "image": "/uploads/1771996970944-pioneer_baner-jpg.jpg",
+      "link": "/series/series-lab",
+      "titleFontSize": null,
+      "descFontSize": 14,
+      "sortOrder": 2,
+      "enabled": true
+    },
+    {
+      "id": "bnr-1771939269451",
+      "title": "Refrigerated circulators",
+      "description": "Temperature  stable :±0.03 / ±0.003;\r\nTemp Ranged from -90 to 200°C",
+      "image": "/uploads/1771997349475-refrige_bath-jpg.jpg",
+      "link": "/series/series-thermal",
+      "titleFontSize": null,
+      "descFontSize": 15,
+      "sortOrder": 3,
+      "enabled": true
+    },
+    {
+      "id": "bnr-1771982542241",
+      "title": "gmp fd banner3",
+      "description": "SJ GMP freeze Dryer for your choice",
+      "image": "/uploads/1771982541055-bannn33-jpg.jpg",
+      "link": "/",
+      "titleFontSize": null,
+      "descFontSize": null,
+      "sortOrder": 4,
+      "enabled": true
+    }
+  ],
+  "video": {
+    "title": "Corporate Video",
+    "description": "See our production capabilities and engineering team in action.",
+    "url": "https://www.youtube.com/embed/rhPSo4_TGi8?si=qf97m4rd-6sU3i3g"
+  },
+  "videos": [
+    {
+      "id": "video-1",
+      "title": "Corporate Intro",
+      "description": "Corporate introduction and factory overview.",
+      "url": "https://www.youtube.com/watch?v=rhPSo4_TGi8",
+      "coverImage": "/images/product-neutral.svg",
+      "sortOrder": 1,
+      "enabled": true
+    },
+    {
+      "id": "video-1771938064020",
+      "title": "50ft",
+      "description": "50ft freeze dryer video0",
+      "url": "https://vimeo.com/1157101714?fl=ip&fe=ec",
+      "coverImage": "/images/product-neutral.svg",
+      "sortOrder": 2,
+      "enabled": true
+    },
+    {
+      "id": "video-1771938923663",
+      "title": "stopper system",
+      "description": "command F stopper system",
+      "url": "https://vimeo.com/1157100736?fl=ip&fe=ec",
+      "coverImage": "/images/product-neutral.svg",
+      "sortOrder": 3,
+      "enabled": true
+    }
+  ],
+  "inquiry": {
+    "title": "Inquiry",
+    "description": "Send your technical requirements and we will respond with a solution proposal.",
+    "ctaText": "Start Inquiry"
+  },
+  "contact": {
+    "whatsappNumber": "8615306638822",
+    "email": "info@sjialab.com",
+    "inquiryLabel": "Inquiry"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com",
+    "instagram": "https://www.instagram.com",
+    "linkedin": "https://www.linkedin.com",
+    "youtube": "https://www.youtube.com",
+    "x": "https://x.com"
+  },
+  "downloads": [
+    {
+      "id": "dl-brochure",
+      "title": "Product Brochure",
+      "summary": "Company and product overview brochure.",
+      "url": "/downloads/brochure",
+      "sortOrder": 1,
+      "enabled": true,
+      "requiresLogin": true
+    }
+  ]
+}

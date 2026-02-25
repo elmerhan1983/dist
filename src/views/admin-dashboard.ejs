@@ -1,0 +1,19 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="section">
+  <div class="container">
+    <h1>后台管理中心</h1>
+    <p>像 WordPress 一样分模块管理：系列、产品、Wiki、Banner/视频/联系方式。</p>
+    <%- include('partials/admin-nav') %>
+    <div class="admin-grid">
+      <a class="admin-link-card" href="/admin/series"><h2>系列管理</h2><p>增加/减少产品系列，编辑系列说明。</p></a>
+      <a class="admin-link-card" href="/admin/products"><h2>产品管理</h2><p>产品归属系列，Markdown 产品详情编辑。</p></a>
+      <a class="admin-link-card" href="/admin/wiki"><h2>Wiki管理</h2><p>新增、编辑、删除技术 Wiki 内容。</p></a>
+      <a class="admin-link-card" href="/admin/videos"><h2>视频管理</h2><p>多视频管理、排序和首页预览。</p></a>
+      <a class="admin-link-card" href="/admin/inquiries"><h2>询盘管理</h2><p>查看所有询盘并识别对应产品来源。</p></a>
+      <a class="admin-link-card" href="/admin/site"><h2>站点设置</h2><p>Banner 轮播、视频、Inquiry 文案、悬浮联系方式。</p></a>
+      <a class="admin-link-card" href="/admin/layout"><h2>页面布局</h2><p>首页区块开关和顺序设置。</p></a>
+    </div>
+  </div>
+</main>
+<%- include('partials/footer') %>
